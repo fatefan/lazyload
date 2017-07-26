@@ -34,7 +34,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     };
 
     var getTopOffset = function getTopOffset(element) {
-        return element.getBoundingClientRect().top + window.pageYOffset - element.ownerDocument.documentElement.clientTop;
+        return element.offsetTop - element.ownerDocument.documentElement.clientTop;
     };
 
     var isBelowViewport = function isBelowViewport(element, container, threshold) {
@@ -43,7 +43,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     };
 
     var getLeftOffset = function getLeftOffset(element) {
-        return element.getBoundingClientRect().left + window.pageXOffset - element.ownerDocument.documentElement.clientLeft;
+        return element.offsetLeft - element.ownerDocument.documentElement.clientLeft;
     };
 
     var isAtRightOfViewport = function isAtRightOfViewport(element, container, threshold) {
@@ -277,8 +277,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
             if (throttle !== 0) {
                 (function () {
-                    var getTime = function getTime() {
-                        new Date().getTime();
+                    var getTime = function () {
+                       return new Date().getTime();
                     };
                     var now = getTime();
                     var remainingTime = throttle - (now - _this._previousLoopTime);
